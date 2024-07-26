@@ -24,12 +24,12 @@ export default function Home() {
   return (
     <div>
 
-    <section className="bg-white container ">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center z-[1] lg:py-16 relative">
+    <section className=" container ">
+        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center z-[1] lg:py-16 relative ">
         
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Make some help come to you</h1>
             <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">Here at {HomeDetails.title} we focus on strengthing the bond betweeen a creator and his audience.</p>
-            {/* <ThreeDCardDemo CardDetails={threeDCardDetails}/> */}
+            <ThreeDCardDemo CardDetails={threeDCardDetails}/>
         </div>
         <div className="bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900 w-full h-full absolute top-0 left-0 z-0"></div>
     </section>

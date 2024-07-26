@@ -1,11 +1,12 @@
 "use client"
 import { Button } from '@/components/ui/button';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
+
 function NavbarAuthButtons(){
-    const router = useRouter()
     return (<>
-           <Button onClick={()=>router.push("/login")}>Login</Button>
-           <Button onClick={()=>router.push("/signup")}>Sign Up</Button>
+           <Link href="/login" prefetch={true}><Button>Login</Button></Link>
+           <Link href="/signup" prefetch={true}><Button>Sign Up</Button></Link>
     </>
      
         
