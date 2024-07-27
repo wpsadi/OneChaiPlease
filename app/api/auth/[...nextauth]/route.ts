@@ -1,9 +1,7 @@
 import NextAuth from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import { ID, Query } from "node-appwrite";
 
-const {databaseName,onBoardingCollection} = AWdata
 
 export const authOptions = NextAuth({
   providers: [
