@@ -1,5 +1,3 @@
-import { Sdatabase } from "@/models/Client/config";
-import { AWdata } from "@/models/data";
 import NextAuth from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
@@ -30,7 +28,7 @@ export const authOptions = NextAuth({
     //   server: process.env.MAIL_SERVER,
     //   from: 'NextAuth.js <no-reply@example.com>'
     // }),
-  ],
+  ]
   
 });
 
