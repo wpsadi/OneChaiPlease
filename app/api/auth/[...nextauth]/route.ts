@@ -31,30 +31,7 @@ export const authOptions = NextAuth({
     //   from: 'NextAuth.js <no-reply@example.com>'
     // }),
   ],
-  callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      try{
-
-        const userExists = await Sdatabase.listDocuments(databaseName,onBoardingCollection,[Query.equal("email",email as string)])
-      }
-      catch(e){
-        const userExists = await Sdatabase.createDocument(databaseName,onBoardingCollection,ID.unique(),{
-          email:email,
-          isCompleted:false
-        })
-      }
-      return true
-    },
-    // async redirect({ url, baseUrl }) {
-    //   return baseUrl
-    // },
-    // async session({ session, user, token }) {
-    //   return session
-    // },
-    // async jwt({ token, user, account, profile, isNewUser }) {
-    //   return token
-    // }
-}
+  
 });
 
 export { authOptions as GET, authOptions as POST };
