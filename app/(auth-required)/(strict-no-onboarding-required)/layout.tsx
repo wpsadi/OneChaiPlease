@@ -54,17 +54,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 />
               )}
 
-{session == "authenticated" && onBoarded==false && (
+{session == "authenticated" && onBoarded==true && (
                 <CustomError
                   message={{
-                    text: "Complete onboarding process",
+                    text: "Already Setup completed",
                     description:
-                      "To fully utilize the website's functionality. you must provide us other details",
-                    code: "401",
+                      "If you want to chnage something on your profile, go to your profile ",
+                    code: "",
                   }}
                   button1={{
-                    text: "Continue to complete the profile",
-                    href: "/onboarding",
+                    text: "Continueto edit the profile",
+                    href: "/profile",
                   }}
                   button2={{
                     text: "Home",
@@ -74,7 +74,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               )}
 
               {
-                session == "authenticated" && onBoarded==true  && children
+                session == "authenticated" && onBoarded==false  && children
               }
             </div>
           </div>
