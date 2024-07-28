@@ -5,8 +5,7 @@ import { SetOrGetOnBoarding } from "@/Actions/user/SetOrGetOnBoarding";
 import { AppwriteException, ID, Models } from "node-appwrite";
 import { Sdatabase } from "@/models/Client/ServerConfig";
 import { AWdata } from "@/models/data";
-import { getServerSideProps } from "next/dist/build/templates/pages";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+
 import NextAuth, { DefaultSession,Session } from "next-auth";
 
 import {  } from "next-auth";
