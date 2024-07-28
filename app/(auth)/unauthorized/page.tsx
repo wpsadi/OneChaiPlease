@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
 
-export default function Unauthorized({ children }:{children:React.ReactNode}) {
+export default function Unauthorized() {
   const {userLoggedIn} = useAuthStore()
   const session = userLoggedIn;
     const router = useRouter()
