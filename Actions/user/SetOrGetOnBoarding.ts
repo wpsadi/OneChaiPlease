@@ -1,3 +1,4 @@
+"use server"
 import { Sdatabase } from "@/models/Client/ServerConfig";
 import { AWdata } from "@/models/data";
 import { ID, Query } from "node-appwrite";

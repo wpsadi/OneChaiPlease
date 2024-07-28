@@ -1,9 +1,11 @@
 import { SetOrGetOnBoarding } from "@/Actions/user/SetOrGetOnBoarding";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import { useAuthStore } from "./Auth";
 
 
 export const authOptions = {
+
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID as string || "",

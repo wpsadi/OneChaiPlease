@@ -18,10 +18,12 @@ interface IdAuth{
   userLoggedIn: "loading" | "authenticated" | "unauthenticated"
   sessionInfo:DefaultSession | null 
     hydrated:boolean
-    onBoarded:boolean |  null
+    onBoarded:boolean 
     setSession(sessionInfo:Session):void
     setHydrated:()=>void
     clearSession:()=>void
+    setOnBoardingValue:(value:boolean )=>void
+    setSessionByValue(value:"unauthenticated" | "loading"):void
 }
 
 export const useAuthStore = create<IdAuth>()(
@@ -29,10 +31,10 @@ export const useAuthStore = create<IdAuth>()(
     immer((set) => ({
       userLoggedIn: "loading",
         hydrated: false,
-        onBoarded: null,
+        onBoarded: false,
         sessionInfo:null,
         setSession(sessionInfo){
-            if (sessionInfo){
+            if (sessionInfo?.user?.email){
               set({
                 userLoggedIn: "authenticated",
                 sessionInfo
@@ -46,15 +48,30 @@ export const useAuthStore = create<IdAuth>()(
             
         },
 
+        setSessionByValue(value){
+            set({
+              userLoggedIn: value,
+              sessionInfo:null
+            })       
+        },
+
 
         clearSession(){
           set({
             userLoggedIn: "unauthenticated",
             sessionInfo:null,
-            onBoarded:null
+            onBoarded:false
           })
           signOut()
         },
+
+        setOnBoardingValue(value){
+          set({
+            onBoarded:value
+          })
+        },
+
+
 
       setHydrated() {
         set({ hydrated: true });
