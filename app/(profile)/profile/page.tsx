@@ -1,11 +1,13 @@
 "use client";
-import React from "react";
+import React, { useActionState } from "react";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useAuthStore } from "@/store/Auth";
 
 function UserProfile() {
-  const { data: sessionData } = useSession();
+  const {sessionInfo} = useAuthStore()
+  const sessionData = sessionInfo;
 
   const PageDetails = {
     title: "OneChaiPlease",
@@ -70,7 +72,7 @@ function UserProfile() {
                       saveDataKeys.map((item, index) => {
                         if (savedData[item] instanceof Array) {
                           return (
-                              <div key={index} className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                              <div key={index+"d"} className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                 <dt className="text-sm font-medium leading-6 text-gray-900">
                                   {item}
                                 </dt>
@@ -79,7 +81,7 @@ function UserProfile() {
                                     role="list"
                                     className="divide-y divide-gray-100 rounded-md border border-gray-200"
                                   >
-                                    {savedData.Attachments && savedData.Attachments.map((content)=>{
+                                    {savedData.Attachments && savedData.Attachments.map((content,index)=>{
                                       return (
                                         <li key={index} className="flex items-center flex-wrap justify-between py-4 pl-4 pr-5 text-sm leading-6">
                                       <div className="flex w-0 flex-1 items-center min-w-[220px]">

@@ -2,8 +2,10 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import {getOrCreateDB} from "@/models/Database/DbSetup"
 
+
 export async function middleware(request: NextRequest) {
 
+  
   await Promise.all([
     getOrCreateDB()
   ])

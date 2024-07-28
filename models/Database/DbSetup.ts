@@ -1,5 +1,5 @@
 import { AWdata } from "@/models/data";
-import { Sdatabase } from "@/models/Client/config";
+import { Sdatabase } from "@/models/Client/ServerConfig";
 import CreateFundReceivedCollection from "./Collections/FundingRecieved";
 import CreateProfileCollection from "./Collections/ProfileCollection";
 import CreateUserCollection from "./Collections/UsersCollection";
@@ -18,7 +18,7 @@ const CreateDatabase = async () => {
 async function getOrCreateDB(){
   try {
     await Sdatabase.get(databaseName)
-    console.log("Database connection available")
+    // console.log("Database connection available")
   } catch (error) {
     try {
       await CreateDatabase()

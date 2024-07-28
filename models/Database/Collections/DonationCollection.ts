@@ -1,5 +1,5 @@
 import { AWdata } from "@/models/data";
-import { Sdatabase } from "@/models/Client/config";
+import { Sdatabase } from "@/models/Client/ServerConfig";
 import { Permission, RelationMutate, RelationshipType } from "node-appwrite";
 
 
@@ -18,12 +18,12 @@ export default  async function CreatedonationCollection() {
 
       // Creating Attributes
       await Promise.all([
-        Sdatabase.createStringAttribute(databaseName, donationCollection, "supporter", 128, true),
-        Sdatabase.createStringAttribute(databaseName, donationCollection, "currency", 20,true),
-        Sdatabase.createStringAttribute(databaseName, donationCollection, "donation_amount", 50, true),
-        Sdatabase.createUrlAttribute(databaseName,donationCollection,"image",true),
-        Sdatabase.createStringAttribute(databaseName, donationCollection, "message", 1000,true),
-        Sdatabase.createDatetimeAttribute(databaseName,donationCollection,"donatedOn",true)
+        await Sdatabase.createStringAttribute(databaseName, donationCollection, "supporter", 128, true),
+        await Sdatabase.createStringAttribute(databaseName, donationCollection, "currency", 20,true),
+        await Sdatabase.createStringAttribute(databaseName, donationCollection, "donation_amount", 50, true),
+        await Sdatabase.createUrlAttribute(databaseName,donationCollection,"image",true),
+        await Sdatabase.createStringAttribute(databaseName, donationCollection, "message", 1000,true),
+        await Sdatabase.createDatetimeAttribute(databaseName,donationCollection,"donatedOn",true)
        
     ]);
 

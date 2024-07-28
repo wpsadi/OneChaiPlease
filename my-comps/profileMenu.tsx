@@ -32,8 +32,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/store/Auth";
 
 interface avatarParams {
   name: string | undefined;
@@ -58,7 +59,8 @@ function generateUrl(
 
 export function ProfileMenu() {
     const router = useRouter();
-  const { data: session } = useSession();
+    const {sessionInfo,clearSession} = useAuthStore()
+    const session = sessionInfo;
 
   const avatarGeneratorParams = {
     name: session?.user?.name || "Anonymous",
@@ -191,7 +193,7 @@ export function ProfileMenu() {
         {
           name: "New Team",
           icon: Plus,
-          shortcut: "⌘+T",
+          shortcut: "",
           hide:false,
           subMenu: false,
           subMenuItems: [],
@@ -245,8 +247,10 @@ export function ProfileMenu() {
           subMenuItems: [],
           disabled: false,
           group: 4,
-          clickEvent: (e: any | undefined | unknown) => {
-            signOut();
+          clickEvent: (e: any | undefined | unknown) => { 
+            
+            clearSession();
+            
           },
         },
       ],

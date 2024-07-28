@@ -47,6 +47,7 @@ export function ThreeDCardDemo({ CardDetails }: { CardDetails: cardDet }) {
           <Image
             src={CardDetails.imageURL}
             height="1000"
+            priority={true}
             width="1000"
             className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
             alt="thumbnail"

@@ -1,5 +1,5 @@
 import { AWdata } from "@/models/data";
-import { Sdatabase } from "@/models/Client/config";
+import { Sdatabase } from "@/models/Client/ServerConfig";
 import { Permission } from "node-appwrite";
 
 
@@ -18,8 +18,8 @@ export default  async function CreateonBoardingCollection() {
 
       // Creating Attributes
       await Promise.all([
-        Sdatabase.createEmailAttribute(databaseName, onBoardingCollection, "email", true),
-        Sdatabase.createBooleanAttribute(databaseName, onBoardingCollection, "isCompleted", true),
+        await Sdatabase.createEmailAttribute(databaseName, onBoardingCollection, "email", true),
+        await Sdatabase.createBooleanAttribute(databaseName, onBoardingCollection, "isCompleted", true),
         
     ]);
 

@@ -7,6 +7,7 @@ import getGravatarUrl from "@/utils/generate-gravtar";
 import UserCreds from "@/my-comps/users/creds";
 import UsernameHover from "@/my-comps/users/username";
 import HeroUser from "@/my-comps/users/hero";
+import { useAuthStore } from "@/store/Auth";
 
 const storageBucket = {
   name: "users",
@@ -19,7 +20,7 @@ const AltBannerAspect = {
 
 const PageDetails = {
   // AltBannerBaseURL: `https://picsum.photos/${AltBannerAspect.width}/${AltBannerAspect.height}.webp`,
-  AltBannerBaseURL: `https://images.unsplash.com/photo-1721928316482-fd46b52d4ae5`,
+  AltBannerBaseURL: `https://picsum.photos/seed/seedValue/${AltBannerAspect.width}/${AltBannerAspect.height}`,
 };
 
 interface BannerImage {
@@ -39,7 +40,8 @@ interface Params {
 }
 
 const ProfilePage = ({ params }: { params: Params }) => {
-  const { data: userData } = useSession();
+  const {sessionInfo} = useAuthStore()
+  const userData = sessionInfo;
 
   const stats = [
     { id: 1, name: "Transactions every 24 hours", value: "44 million" },
@@ -103,7 +105,7 @@ const ProfilePage = ({ params }: { params: Params }) => {
       urlObject.searchParams.append(key, params[key]?.toString() || "")
     );
   
-    return urlObject.toString();
+    return (urlObject.toString()).replace("seedValue",username);
   };
 
 
