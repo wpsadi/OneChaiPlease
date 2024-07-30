@@ -5,6 +5,8 @@ type RequiredData = {
     onBoardingCollection:string
     donationCollection:string
     fundingReceived:string
+
+    UsersBucket:string
 }
 
 
@@ -15,5 +17,7 @@ export const AWdata:RequiredData = {
     profileCollection:"Profiles",
     onBoardingCollection:"onBoardedUsers",
     donationCollection:"Donations",
-    fundingReceived:"DonationCollected"
+    fundingReceived:"DonationCollected",
+
+    UsersBucket:"UsersAssets"
 }

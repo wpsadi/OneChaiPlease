@@ -18,8 +18,9 @@ export default  async function CreateonBoardingCollection() {
 
       // Creating Attributes
       await Promise.all([
-        await Sdatabase.createEmailAttribute(databaseName, onBoardingCollection, "email", true),
-        await Sdatabase.createBooleanAttribute(databaseName, onBoardingCollection, "isCompleted", true),
+         Sdatabase.createEmailAttribute(databaseName, onBoardingCollection, "email", true),
+         Sdatabase.createDatetimeAttribute(databaseName,onBoardingCollection,"joinedOn",true),
+         Sdatabase.createBooleanAttribute(databaseName, onBoardingCollection, "isCompleted", true),
         
     ]);
 

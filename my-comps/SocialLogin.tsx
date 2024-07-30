@@ -94,7 +94,6 @@ export function SocialLogin() {
       return toast.info("We are working to make this method available to you")
     }
 
-    console.log(session.data)
     if (session.status == "authenticated" ){
       return toast.error("Already Logged In")
     }
@@ -110,7 +109,7 @@ export function SocialLogin() {
 
 
   return (
-    <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
       <h5 className="mb-3 text-base font-semibold text-gray-900 md:text-xl dark:text-white">
         {details.title}
       </h5>
@@ -121,13 +120,13 @@ export function SocialLogin() {
         {details.items &&
           details.items.map((providerInfo, index) => (
             <li key={index}>
-              <div
+              <div 
                 onClick={() => {
                   OAuthButton(providerInfo.name);
                 }}
                 // href={providerInfo.link}
                 // target="_parent"
-                className="flex items-center cursor-pointer p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
+                className="flex select-none items-center cursor-pointer p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
               >
                 <providerInfo.tag className="inline text-lg" />
                 <span className="flex-1 ms-3 whitespace-nowrap">

@@ -1,13 +1,15 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import {getOrCreateDB} from "@/models/Database/DbSetup"
+import { getOrCreateStorages } from './models/Storage/StorageSetup'
 
 
 export async function middleware(request: NextRequest) {
 
-  
-  await Promise.all([
-    getOrCreateDB()
+  // use await , but it will make your website solwer but i will ensure a lot of things
+  Promise.all([
+    getOrCreateDB(),
+    getOrCreateStorages()
   ])
   
   if (request.nextUrl.pathname == ('/signup')) {

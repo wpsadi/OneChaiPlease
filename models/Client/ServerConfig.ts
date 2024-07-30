@@ -1,4 +1,4 @@
-import  { Client, Databases } from "node-appwrite"
+import  { Client, Databases, Storage } from "node-appwrite"
 
 const Sclient:Client = new Client()
     .setEndpoint(process.env.Appwrite_Endpoint as string | undefined || "") // Your API Endpoint
@@ -7,5 +7,5 @@ const Sclient:Client = new Client()
 
 
 export const Sdatabase:Databases = new Databases(Sclient)
-
+export const Sstorage:Storage = new Storage(Sclient)
 export default Sclient

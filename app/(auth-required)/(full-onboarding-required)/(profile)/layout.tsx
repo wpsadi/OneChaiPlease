@@ -1,7 +1,7 @@
 "use client"
+import DefaultCommonLayout from "@/my-comps/defaultCommonLayout"
 import CustomError from "@/my-comps/Error"
 import { useAuthStore } from "@/store/Auth"
-import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
@@ -44,14 +44,11 @@ const session = userLoggedIn;
       <>
 
 <div>
-        <section className=" container ">
-          <div className="py-8 px-4  max-w-screen-xl  z-[1] lg:py-16 relative ">
-            <div className="flex justify-center items-center min-h-[80vh]">
+        <DefaultCommonLayout>
+        <div className="flex justify-center items-center min-h-[80vh]">
                 {children }
             </div>
-          </div>
-          <div className="bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900 w-full h-full absolute top-0 left-0 z-0"></div>
-        </section>
+        </DefaultCommonLayout>
       </div>
       </>
     )

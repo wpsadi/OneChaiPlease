@@ -17,7 +17,7 @@ const CreateDatabase = async () => {
 
 async function getOrCreateDB(){
   try {
-    await Sdatabase.get(databaseName)
+    const resp = await Sdatabase.get(databaseName)
     // console.log("Database connection available")
   } catch (error) {
     try {

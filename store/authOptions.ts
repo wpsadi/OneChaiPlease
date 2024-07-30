@@ -1,26 +1,24 @@
 import { SetOrGetOnBoarding } from "@/Actions/user/SetOrGetOnBoarding";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import { useAuthStore } from "./Auth";
+import { NextAuthOptions, User } from "next-auth";
 
-
-export const authOptions = {
-
+export const authOptions: NextAuthOptions = {
   providers: [
     GitHubProvider({
-      clientId: process.env.GITHUB_ID as string || "",
-      clientSecret: process.env.GITHUB_SECRET as string || "",
+      clientId: (process.env.GITHUB_ID as string) || "",
+      clientSecret: (process.env.GITHUB_SECRET as string) || "",
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string || "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string || "",
+      clientId: (process.env.GOOGLE_CLIENT_ID as string) || "",
+      clientSecret: (process.env.GOOGLE_CLIENT_SECRET as string) || "",
       authorization: {
         params: {
           prompt: "consent",
           access_type: "offline",
-          response_type: "code"
-        }
-      }
+          response_type: "code",
+        },
+      },
     }),
     // Uncomment and configure if you want to add Email provider
     // EmailProvider({
@@ -28,17 +26,17 @@ export const authOptions = {
     //   from: 'NextAuth.js <no-reply@example.com>'
     // }),
   ],
+  pages: {
+    signIn: "/dashboard",
+    signOut: '/',
+  },
   callbacks: {
-    async signIn({ user }: { user: { email?: string | null } }) {
+    async signIn({ user }: { user: User }): Promise<boolean> {
       if (user.email) {
         const response = await SetOrGetOnBoarding(user.email);
-
-        if (response.status) {
-          return true;
-        }
-        return "/unauthorized";
+        return response.status;
       }
-      return "/unauthorized";
+      return false;
     }
   }
 };

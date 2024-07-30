@@ -51,6 +51,7 @@ export async function SetOrGetOnBoarding(email: string):Promise<Resp> {
         {
           email,
           isCompleted: false,
+          joinedOn: new Date()
         }
       );
       return {

@@ -2,7 +2,6 @@
 "use client";
 import React, {  useRef, useState } from "react";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
 import getGravatarUrl from "@/utils/generate-gravtar";
 import UserCreds from "@/my-comps/users/creds";
 import UsernameHover from "@/my-comps/users/username";
@@ -69,37 +68,6 @@ const ProfilePage = ({ params }: { params: Params }) => {
     baseUrl = PageDetails.AltBannerBaseURL
   ): string => {
 
-    // const [savedBannerURL,setSavedBannerURL] = useState({
-    //   status:false,
-    //   message:"Not available"
-    // })
-    // useEffect(() => {
-    //   (async ()=>{
-    //     const storedBanner =await loadImage(storageBucket.name,`banner@user@${username}`);
-    //     if (storedBanner) {
-    //       setSavedBannerURL(storedBanner)
-    //   } else {
-    //     const urlObject = new URL(baseUrl);
-    //     Object.keys(params).forEach((key) =>
-    //       urlObject.searchParams.append(key, params[key]?.toString() || "")
-    //     );
-    //     const url = urlObject.toString()
-    //     let blob: any = await urlToImageBlob(url);
-    //     if (blob instanceof Blob) {
-    //       const saveResponse = await SaveImageWithBlob(
-    //         storageBucket.name,
-    //         `banner@user@${username}.webp`,
-    //         blob
-    //       );
-    //     }
-        
-    //   }
-    //   })()
-    // }, [params, username,baseUrl]);
-  
-    // if (savedBannerURL.status) {
-    //   return savedBannerURL.message
-    // }
     const urlObject = new URL(baseUrl);
     Object.keys(params).forEach((key) =>
       urlObject.searchParams.append(key, params[key]?.toString() || "")

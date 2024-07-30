@@ -1,14 +1,10 @@
 "use client";
 import CustomError from "@/my-comps/Error";
 import { useAuthStore } from "@/store/Auth";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const {userLoggedIn,onBoarded} = useAuthStore()
   const session = userLoggedIn;
-  const router = useRouter();
 
 
 
